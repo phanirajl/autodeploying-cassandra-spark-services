@@ -1,0 +1,18 @@
+[Unit]
+Description=Cassandra NoSQL database
+Documentation=https://cassandra.apache.org/
+After=network.target
+
+[Service]
+Type=forking
+User=root
+ExecStart=/opt/cassandra/bin/cassandra -R
+Environment=JAVA_HOME=/opt/jdk/
+WorkingDirectory=/opt/cassandra/lib
+LimitMEMLOCK=infinity
+LimitNOFILE=100000
+LimitNPROC=32768
+LimitAS=infinity
+
+[Install]
+WantedBy=multi-user.target
